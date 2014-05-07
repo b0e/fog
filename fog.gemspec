@@ -45,6 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency("fog-json")
 
   s.add_dependency('nokogiri', '~> 1.5', '>= 1.5.11')
+  s.add_dependency('opennebula', '4.4.0')
 
   # Modular providers
   s.add_dependency("fog-brightbox")

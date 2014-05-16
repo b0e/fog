@@ -70,15 +70,15 @@ newvm.name = "FooBarVM"
 newvm.gid = 0
 
 # set cores and memory (MB)
-newvm.flavor.VCPU = 2
-newvm.flavor.MEMORY = 256
+newvm.flavor.vcpu = 2
+newvm.flavor.memory = 256
 
 # create a new network interface attached to the network with id 1 and virtio as driver/model
 network = client.networks.get(1)
 nic = con.interfaces.new({ :vnet => network, :model => "virtio"})
 
 # Attach the new nic to our vm
-newvm.flavor.NIC = [ nic ]
+newvm.flavor.nic = [ nic ]
 
 # instantiat the new vm
 newvm.save
@@ -105,7 +105,7 @@ _AND_ everything not mentioned in features or examples ;)
 * [Fog documentation](http://rubydoc.info/gems/fog)
 * [Fog Github repo](https://github.com/fog/fog)
 * [Fog Release Notes](https://github.com/fog/fog/blob/master/changelog.txt)
-* [OpenNebula ruby bindings](http://docs.opennebula.org/stable/integration/system_interfaces/ruby.html)
+* [Ruby OpenNebula Cloud API](http://docs.opennebula.org/stable/integration/system_interfaces/ruby.html)
 * [OpenNebula ruby bindings](http://docs.opennebula.org/doc/stable/oca/ruby/)
 
 ## Support and Feedback

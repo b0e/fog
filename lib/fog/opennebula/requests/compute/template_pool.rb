@@ -62,14 +62,23 @@ module Fog
               # should i break?
             end
 
-            h
-	  end
+          
+            # every key should be lowercase
+            ret_hash = {}
+            h.each_pair do |k,v| 
+              ret_hash.merge!({k.downcase => v}) 
+            end
+            ret_hash
+          end
 
           templates 
         end #def template_pool
       end #class Real
 
       class Mock
+        def template_pool(filter = { })
+          [ {}, {} ]
+        end
       end #class Mock
     end #class OpenNebula
   end #module Compute

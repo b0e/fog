@@ -17,6 +17,13 @@ module Fog
           end # if filter[:id].nil?
 
           netpool.each do |network| 
+            # filtering by name
+            # done here, because OpenNebula:VirtualNetworkPool does not support something like .delete_if
+            if filter[:name] && filter[:name].is_a?(String) && !filter[:name].empty?
+                puts network.inspect
+                next if network.to_hash["VNET"]["NAME"] != filter[:name]
+            end
+
             networks << network_to_attributes(network.to_hash)
           end
           networks

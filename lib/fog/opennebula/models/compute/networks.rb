@@ -7,12 +7,23 @@ module Fog
       class Networks < Fog::Collection
         model Fog::Compute::OpenNebula::Network
 
-        def all(filter={})
-          load(service.list_networks(filter))
+        def all
+          data = service.list_networks
+          load(data)
         end
 
         def get(id)
-          self.all({:id => id}).first
+          data = service.list_networks({:id => id})
+          load(data).first
+        rescue Fog::Compute::OpenNebula::NotFound
+          nil
+        end
+
+        def get_by_name(name)
+          data = service.list_networks({:name => name})
+          load(data)
+        rescue Fog::Compute::OpenNebula::NotFound
+          nil
         end
 
       end

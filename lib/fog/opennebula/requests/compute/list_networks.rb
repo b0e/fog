@@ -20,7 +20,6 @@ module Fog
             # filtering by name
             # done here, because OpenNebula:VirtualNetworkPool does not support something like .delete_if
             if filter[:name] && filter[:name].is_a?(String) && !filter[:name].empty?
-                puts network.inspect
                 next if network.to_hash["VNET"]["NAME"] != filter[:name]
             end
 
@@ -49,7 +48,7 @@ module Fog
 
       class Mock
         def list_networks(filters={})
-          net1 = mock_network 'net1'
+          net1 = mock_network 'fogtest'
           net2 = mock_network 'net2'
           [net1, net2]
         end

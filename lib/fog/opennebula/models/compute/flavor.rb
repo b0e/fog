@@ -45,12 +45,12 @@ module Fog
         end  
 
         def get_vcpu
-          vcpu = 1 unless vcpu
+          self.vcpu = 1 unless vcpu
           "VCPU=#{vcpu}\n"
         end  
 
         def get_memory
-          memory = 128 unless memory
+          self.memory = 128 unless memory
           "MEMORY=#{memory}\n"
         end  
 

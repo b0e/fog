@@ -105,11 +105,12 @@ module Fog
 
           nic1 = Mock_nic.new
           nic1.vnet = networks.first
+
           [ 
             {
               :id       => "4", 
               :name     => "fogtest", 
-              :content  => "CPU=\"0.1\"\nDISK=[\n  IMAGE=\"tt\",\n  IMAGE_UNAME=\"oneadmin\" ]\nDISK=[\n  IMAGE=\"testimage\",\n  IMAGE_UNAME=\"oneadmin\" ]\nGRAPHICS=[\n  LISTEN=\"0.0.0.0\",\n  TYPE=\"VNC\" ]\nMEMORY=\"126\"\nNIC=[\n  NETWORK=\"fogtest\",\n  NETWORK_UNAME=\"oneadmin\" ]\nOS=[\n  ARCH=\"x86_64\" ]\nSCHED_REQUIREMENTS=\"NFS=true\"\nVCPU=\"2\"", "cpu"=>"0.1",
+              :content  => "CPU=\"0.1\"\nDISK=[\n  IMAGE=\"tt\",\n  IMAGE_UNAME=\"oneadmin\" ]\nDISK=[\n  IMAGE=\"testimage\",\n  IMAGE_UNAME=\"oneadmin\" ]\nGRAPHICS=[\n  LISTEN=\"0.0.0.0\",\n  TYPE=\"VNC\" ]\nMEMORY=\"666\"\nNIC=[\n  NETWORK=\"fogtest\",\n  NETWORK_UNAME=\"oneadmin\" ]\nOS=[\n  ARCH=\"x86_64\" ]\nSCHED_REQUIREMENTS=\"NFS=true\"\nVCPU=\"666\"", "cpu"=>"0.1",
               "disk" => [{"IMAGE"=>"tt", "IMAGE_UNAME"=>"oneadmin"}, {"IMAGE"=>"testimage", "IMAGE_UNAME"=>"oneadmin"}],
               "graphics"=>{"LISTEN"=>"0.0.0.0", "TYPE"=>"VNC"},
               "memory"=>"126",

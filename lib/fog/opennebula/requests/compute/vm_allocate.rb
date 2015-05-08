@@ -50,12 +50,26 @@ module Fog
             data["cpu"]    =  temp["VCPU"] 	unless temp["VCPU"].nil?
             data["memory"] =  temp["MEMORY"] 	unless temp["MEMORY"].nil?
             unless (temp["NIC"].nil?) then
-              if one["VM"]["TEMPLATE"]["NIC"].is_a?(Array)
-                data["mac"]	=	temp["NIC"][0]["MAC"] 	unless temp["NIC"][0]["MAC"].nil?
-                data["ip"]	=	temp["NIC"][0]["IP"] 	unless temp["NIC"][0]["IP"].nil?
+              if temp["NIC"].is_a?(Array)
+                data["interfaces"] = temp["NIC"].map do |i|
+                  interfaces.new({
+                    :id    => i["NIC_ID"],
+                    :vnet  => i["NETWORK_ID"],
+                    :model => i["MODEL"],
+                    :name  => "",
+                    :mac   => i["MAC"],
+                    :ip    => i["IP"],
+                  }.reject{|k,v| v.nil?})
+                end
               else
-                data["mac"]	=	temp["NIC"]["MAC"] 	unless temp["NIC"]["MAC"].nil?
-                data["ip"]	=	temp["NIC"]["IP"] 	unless temp["NIC"]["IP"].nil?
+                data["interfaces"] = Array.new << interfaces.new({
+                    :id    => temp["NIC"]["NIC_ID"],
+                    :vnet  => temp["NIC"]["NETWORK_ID"],
+                    :model => temp["NIC"]["MODEL"],
+                    :name  => "",
+                    :mac   => temp["NIC"]["MAC"],
+                    :ip    => temp["NIC"]["IP"],
+                }.reject{|k,v| v.nil?})
               end
             end
           end

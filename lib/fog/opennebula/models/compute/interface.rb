@@ -10,11 +10,12 @@ module Fog
         attribute :model
         attribute :name
         attribute :mac
+        attribute :ip
 
         def save
           raise Fog::Errors::Error.new('Creating a new interface is not yet implemented. Contributions welcome!')
         end
- 
+
         def vnetid
           return vnet
         end

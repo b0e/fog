@@ -16,6 +16,7 @@ module Fog
         attribute :cpu
         attribute :memory
         attribute :user
+        attribute :interfaces
         attribute :gid
         attribute :group
         attribute :onevm_object
@@ -29,8 +30,16 @@ module Fog
         # needed by formbuilder
         # should be handled by foreman and not by fog
         def vminterfaces
-          []
+          interfaces
         end
+
+        # only for integration in foreman
+        # needed by formbuilder
+        # should be handled by foreman and not from by fog
+        def select_nic(fog_nics, nic)
+          fog_nics.detect {|fn| fn.vnet == nic.compute_attributes['vnetid']} # grab any nic on the same network
+        end
+
 
         # only for integration in foreman
         # needed by formbuilder

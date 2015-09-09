@@ -97,7 +97,7 @@ module Fog
           end
           
           templates.delete nil
-          raise Fog::Compute::OpenNebula::NotFound, "Flavor/Template not found" if templates.empty?
+          #raise Fog::Compute::OpenNebula::NotFound, "Flavor/Template not found" if templates.empty?
           templates
         end #def template_pool
       end #class Real

@@ -26,28 +26,6 @@ module Fog
           merge_attributes(service.vm_allocate(attributes))
         end
 
-        # only for integration in foreman
-        # needed by formbuilder
-        # should be handled by foreman and not by fog
-        def vminterfaces
-          interfaces
-        end
-
-        # only for integration in foreman
-        # needed by formbuilder
-        # should be handled by foreman and not from by fog
-        def select_nic(fog_nics, nic)
-          fog_nics.detect {|fn| fn.vnet == nic.compute_attributes['vnetid']} # grab any nic on the same network
-        end
-
-
-        # only for integration in foreman
-        # needed by formbuilder
-        # should be handled by foreman and not from by fog
-        def vminterfaces_attributes=(attributes)
-          true
-        end
-
         def vm_ip_address
           ip
         end
@@ -82,13 +60,6 @@ module Fog
 
         def ready?
           (status == 3) 
-        end
-
-        # only for integration in foreman
-        # needed by formbuilder
-        # should be handled by foreman and not by fog
-        def template_id
-          ""
         end
 
         def console_output
